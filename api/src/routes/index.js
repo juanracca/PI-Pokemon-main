@@ -254,7 +254,6 @@ const getAllPokemons = async () => {
 
 router.get('/pokemonsDb', async (req, res) => {
     const dbPokemons = await Pokemon.findAll();
-    console.log(dbPokemons)
     res.status(200).send(dbPokemons);
 });
 
@@ -370,6 +369,42 @@ router.get('/types', async (req, res) => {
 
     const allTypes = await Type.findAll();
     res.status(200).send(allTypes);
+});
+
+router.post('/pokemon', async (req, res) => {
+
+    let {
+        id,
+        name,
+        image,
+        hp,
+        attack,
+        defense,
+        speed,
+        height, 
+        weight,
+        type,
+    } = req.body;
+
+    try {
+
+        let pokemonCreated = await Pokemon.create({
+            id, name, image, hp, attack, defense, speed, height, weight
+        });
+        let typeDb = await Type.findAll({
+            where: { name: type }
+        });
+
+        pokemonCreated.addType(typeDb);
+        console.log(pokemonCreated)
+
+        res.status(200).send('Pokemon created succesfully!');
+
+    } catch(err) {
+
+        res.status(400).send(err);
+    
+    };    
 });
 
 module.exports = router;
