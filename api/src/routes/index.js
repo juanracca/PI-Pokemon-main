@@ -407,4 +407,34 @@ router.post('/pokemon', async (req, res) => {
     };    
 });
 
+router.delete('/pokemon/:id', async (req, res) => {
+    const id = req.params.id;
+
+    if(!id){
+        return res.status(400).send({
+            message: 'Can not delete without Pokemon id'
+        });
+    }; 
+    const pokemonDelete = await Pokemon.findOne({
+        where: {
+            id,
+        },
+    });
+    if(!pokemonDelete){
+        return res.status(400).send({
+            message: `Can not find the Pokemon whit id ${id}`
+        });
+    };
+    try{
+        await pokemonDelete.destroy();
+        return res.status(200).send({
+            message: `Pokemon whit id ${id} succesfully deleted`
+        });
+    } catch(er){
+        return res.status(400).send({
+            message: `Error: ${err.message}`
+        });
+    };
+});
+
 module.exports = router;
