@@ -253,8 +253,10 @@ const getAllPokemons = async () => {
 };
 
 router.get('/pokemonsDb', async (req, res) => {
+
     const dbPokemons = await Pokemon.findAll();
     res.status(200).send(dbPokemons);
+    
 });
 
 //------------------------------------------------------->
