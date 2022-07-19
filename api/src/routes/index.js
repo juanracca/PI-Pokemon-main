@@ -250,6 +250,7 @@ const getAllPokemons = async () => {
 
     return allPokemons;
 
+
 };
 
 router.get('/pokemonsDb', async (req, res) => {
