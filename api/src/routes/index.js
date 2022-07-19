@@ -32,6 +32,7 @@ const getApiInfo40 = async () => {
         console.log(pokemons)
         return pokemons; 
     }));   
+    
     return data1;
 };
 const getDbPokemons = async () => {
