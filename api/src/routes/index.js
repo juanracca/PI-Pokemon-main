@@ -259,6 +259,7 @@ router.get('/pokemonsDb', async (req, res) => {
 
 //------------------------------------------------------->
 
+
 router.get('/pokemons', async (req, res) => {
     const name = req.query.name;
     let pokemons = await getDbPokemons();
