@@ -30,7 +30,7 @@ const getApiInfo40 = async () => {
             weight: dataPokemon.data.weight,
         };
         console.log(pokemons)
-        return pokemons;
+        return pokemons; 
     }));   
     return data1;
 };
