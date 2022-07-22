@@ -34,6 +34,7 @@ const getApiInfo40 = async () => {
     }));   
     return data1;
 };
+
 const getDbPokemons = async () => {
     let totalPokemons =  await getApiInfo40();
     console.log(totalPokemons)
